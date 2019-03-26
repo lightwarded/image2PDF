@@ -170,8 +170,8 @@ def __converted(save_book_name,book_pages=[],filename_sort_fn=None):
     __a4_w, __a4_h = portrait(A4)
 
     # 实际可用宽高
-    __a4_w = __a4_w - rMg - lMg
-    __a4_h = __a4_h - tMg - bMg
+    __a4_w = __a4_w - max(rMg, lMg) * 2
+    __a4_h = __a4_h - max(tMg, bMg) * 2
 
     # 对数据进行排序
     if (filename_sort_fn == None):
