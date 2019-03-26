@@ -163,8 +163,15 @@ def __converted(save_book_name,book_pages=[],filename_sort_fn=None):
     :return:
     """
 
+    # 设置页边距
+    rMg, lMg, tMg, bMg = 36,36,36,18
+
     # A4 纸的宽高
-    __a4_w, __a4_h = landscape(A4)
+    __a4_w, __a4_h = portrait(A4)
+
+    # 实际可用宽高
+    __a4_w = __a4_w - rMg - lMg
+    __a4_h = __a4_h - tMg - bMg
 
     # 对数据进行排序
     if (filename_sort_fn == None):
@@ -186,7 +193,7 @@ def __converted(save_book_name,book_pages=[],filename_sort_fn=None):
 
     bookPagesData = []
 
-    bookDoc = SimpleDocTemplate(save_book_name, pagesize=A4, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
+    bookDoc = SimpleDocTemplate(save_book_name, pagesize=A4, rightMargin=rMg, leftMargin=lMg, topMargin=tMg, bottomMargin=bMg)
 
     for page in book_pages:
 
